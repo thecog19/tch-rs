@@ -19,6 +19,9 @@ pub struct C_tensor {
     _private: [u8; 0],
 }
 
+unsafe impl Sync for C_tensor {}
+unsafe impl Send for C_tensor {}
+
 extern "C" {
     pub fn at_new_tensor() -> *mut C_tensor;
     pub fn at_shallow_clone(arg: *mut C_tensor) -> *mut C_tensor;
